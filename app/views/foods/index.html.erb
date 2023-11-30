@@ -1,35 +1,18 @@
 <section class="foodsContainer">
 <div class="addFood">
+<a href="/foods/new">
 <button type="button">Add Food</button>
+</a>
 </div>
 
 <div class="foodTable">
-
-<div class="foodTableHeading">
-<div><b>Food</b></div>
-<div><b>Measurement Unit</b></div>
-<div><b>Unit Price</b></div>
-<div><b>Actions</b></div>
-</div>
-
-<div class="foodTableBody">
-<div><b>Apple</b></div>
-<div><b>Grams</b></div>
-<div><b>$5</b></div>
-<div><b>delete</b></div>
-</div>
-<div class="foodTableBody">
-<div><b>Apple</b></div>
-<div><b>Grams</b></div>
-<div><b>$5</b></div>
-<div><b>delete</b></div>
-</div>
-<div class="foodTableBody">
-<div><b>Apple</b></div>
-<div><b>Grams</b></div>
-<div><b>$5</b></div>
-<div><b>delete</b></div>
-</div>
-
+<%= render partial:"foods/foods_header"%>
+<% if (@foods.size>0) %>
+<%@foods.each_with_index do |food, index|%>
+<%= render partial:"foods/food_item", locals: {food_item:food, index: index} %>
+<% end %>
+<% else %>
+ <%= render partial:"foods/no_food"%>
+<% end %>
 </div>
 </section>
