@@ -45,7 +45,7 @@ Ruby on Rails, Visual Studia Code, WSL
 
 In order to use this project.. Clone this repository to your desired folder by pasting this command in your command line interface:
 
-  https://github.com/tajemouti/rails_group_project.git
+  https://github.com/Graciano1997/recipe_app.git
 
 ### Prerequisites <a name="prerequisites"></a>
 
@@ -72,9 +72,8 @@ rspec
 
 ## 👥 Authors <a name="authors"></a>
 
-- GitHub: [@tajemouti](https://github.com/tajemouti)
-- GitHub: [@newton](https://github.com/mohammadnewton)
-- GitHub: [@ngala](https://github.com/ngalamac)
+- GitHub: [@Graciano](https://github.com/Graciano1997)
+- GitHub: [@Young](https://github.com/Young-Gaius)
 
 ## 🔭 Future Features <a name="future-features"></a>
 
