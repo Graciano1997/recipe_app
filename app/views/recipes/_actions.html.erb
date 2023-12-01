@@ -2,7 +2,9 @@
   <a href="#">
   <button type="button">Generate Shopping List</button>
   </a>
+  <%if current_user.id==recipe.user_id %>
   <a href=<%="/recipes/#{recipe.id}/recipe_foods/new"%>>
-  <button type="button" disabled="true">Add ingredient</button>
+  <button type="button">Add ingredient</button>
   </a>
+  <%end%>
   </div>
