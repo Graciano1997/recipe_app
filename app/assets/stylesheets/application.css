@@ -25,7 +25,9 @@ body {
   margin: 1.5rem;
 }
 
-.foodsContainer {
+.foodsContainer,
+.recipeItemContainer,
+.shoppingItemContainer {
   display: flex;
   flex-direction: column;
 }
@@ -43,16 +45,34 @@ body {
   border: 2px solid black;
 }
 
-.foodTableHeading {
+.foodTableHeading,
+.foodTableHeadingShopping {
   background-color: rgb(112, 112, 109);
   display: grid;
   grid-template-columns: repeat(2, 30fr) 25fr 15fr;
 }
 
+.shoppingTableBody {
+  display: grid;
+}
+
+.foodTableHeadingShopping,
+.shoppingTableBody {
+  grid-template-columns: 50fr 30fr 20fr;
+}
+
 .foodTableHeading div,
-.foodTableBody div {
+.foodTableBody div,
+.shoppingTableBody div,
+.foodTableHeadingShopping div {
   border-right: 2px solid black;
   padding-left: 4px;
+}
+
+.shopSubHeading {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
 }
 
 .foodTableBody {
@@ -60,7 +80,8 @@ body {
   grid-template-columns: repeat(2, 30fr) 25fr 15fr;
 }
 
-.foodTableBody div {
+.foodTableBody div,
+.shoppingTableBody div {
   padding: 0.5rem 0 0.5rem 4px;
 }
 
@@ -75,4 +96,38 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.headerItem {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.recipeDesciption {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#recipePrepTimeAndstates,
+.recipeActions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.recipeActions {
+  margin: 2rem 0 1rem  0;
+}
+
+/* .recipe {
+margin-top: 1rem;
+} */
+
+hr {
+  margin: 0 2rem 0 2rem;
+}
+
+.togle {
+  background-image: url("../images/togleOff.svg");
 }
