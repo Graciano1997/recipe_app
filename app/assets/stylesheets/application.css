@@ -25,9 +25,7 @@ body {
   margin: 1.5rem;
 }
 
-.foodsContainer
-.recipeItemContainer
- {
+.foodsContainer .recipeItemContainer {
   display: flex;
   flex-direction: column;
 }
@@ -86,9 +84,9 @@ body {
 }
 
 .recipeDesciption {
-display: flex;
-flex-direction: column;
-gap:1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 #recipePrepTimeAndstates,
@@ -98,7 +96,7 @@ gap:1rem;
 }
 
 .recipeActions {
-margin: 2rem 0 1rem  0;
+  margin: 2rem 0 1rem  0;
 }
 
 /* .recipe {
@@ -109,6 +107,6 @@ hr {
   margin: 0 2rem 0 2rem;
 }
 
-.togle{
+.togle {
   background-image: url("../images/togleOff.svg");
 }
