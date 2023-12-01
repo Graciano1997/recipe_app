@@ -53,7 +53,7 @@ body {
 }
 
 .shoppingTableBody {
-display: grid;
+  display: grid;
 }
 
 .foodTableHeadingShopping,
@@ -79,7 +79,6 @@ display: grid;
   display: grid;
   grid-template-columns: repeat(2, 30fr) 25fr 15fr;
 }
-
 
 .foodTableBody div,
 .shoppingTableBody div {
