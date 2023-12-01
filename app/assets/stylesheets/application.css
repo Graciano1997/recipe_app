@@ -13,3 +13,66 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem;
+}
+
+.foodsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.addFood {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.foodTable {
+  margin: 0 1.5rem 0 1.5rem;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+}
+
+.foodTableHeading {
+  background-color: rgb(112, 112, 109);
+  display: grid;
+  grid-template-columns: repeat(2, 30fr) 25fr 15fr;
+}
+
+.foodTableHeading div,
+.foodTableBody div {
+  border-right: 2px solid black;
+  padding-left: 4px;
+}
+
+.foodTableBody {
+  display: grid;
+  grid-template-columns: repeat(2, 30fr) 25fr 15fr;
+}
+
+.foodTableBody div {
+  padding: 0.5rem 0 0.5rem 4px;
+}
+
+.noFoodTableSms {
+  display: flex;
+  color: red;
+  justify-content: center;
+}
+
+/* Form */
+.formSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
