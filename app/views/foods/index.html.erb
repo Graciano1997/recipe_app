@@ -1,18 +1,34 @@
-<section class="foodsContainer">
-<div class="addFood">
-<a href="/foods/new">
-<button type="button">Add Food</button>
-</a>
+<div>
+  <h1>Food List</h1>
+  <%= link_to 'Add Food', new_food_path %>
 </div>
 
-<div class="foodTable">
-<%= render partial:"foods/foods_header"%>
-<% if (@foods.size>0) %>
-<%@foods.each_with_index do |food, index|%>
-<%= render partial:"foods/food_item", locals: {food_item:food, index: index} %>
-<% end %>
+<% if @foods.empty? %>
+  <p>Please add foods using the Add Food button</p>
 <% else %>
- <%= render partial:"foods/no_food"%>
+<table>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Measurement Unit</th>
+      <th>Unit Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.food %></td>
+        <td><%= food.measurement_unit %></td>
+        <td>$<%= food.price %></td>
+        <td>
+          <% if can? :destroy, food %>
+            <%= link_to 'Delete Food', food, data: { turbo_method: :delete, turbo_confirm: 'You are about to delete this food! Do you want to continue?' }, type:"button" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <% end %>
-</div>
-</section>

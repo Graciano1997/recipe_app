@@ -85,6 +85,7 @@ GEM
     bootsnap (1.17.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    cancancan (3.5.0)
     capybara (3.39.2)
       addressable
       matrix
@@ -119,7 +120,7 @@ GEM
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.6.0)
-    irb (1.9.1)
+    irb (1.9.0)
       rdoc
       reline (>= 0.3.8)
     jbuilder (2.11.5)
@@ -141,7 +142,7 @@ GEM
     minitest (5.20.0)
     msgpack (1.7.2)
     mutex_m (0.2.0)
-    net-imap (0.4.6)
+    net-imap (0.4.5)
       date
       net-protocol
     net-pop (0.1.2)
@@ -150,7 +151,7 @@ GEM
       timeout
     net-smtp (0.4.0)
       net-protocol
-    nio4r (2.6.1)
+    nio4r (2.6.0)
     nokogiri (1.15.5-x64-mingw-ucrt)
       racc (~> 1.4)
     nokogiri (1.15.5-x86_64-linux)
@@ -279,6 +280,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  cancancan
   capybara
   debug
   devise
@@ -286,7 +288,7 @@ DEPENDENCIES
   jbuilder
   pg (~> 1.1)
   puma (>= 5.0)
-  rails (~> 7.1.1)
+  rails (~> 7.1.2)
   rubocop (>= 1.0, < 2.0)
   selenium-webdriver
   sprockets-rails

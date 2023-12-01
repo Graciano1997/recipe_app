@@ -1,19 +1,42 @@
 class RecipesController < ApplicationController
-  def index; end
+  before_action :set_recipe, only: %i[show destroy]
 
-  def show
-    @recipe = Recipe.find(params[:id])
-    @recipe_items = @recipe.recipe_foods
+  def index
+    @recipes = current_user.recipes
   end
 
-  def create; end
+  def new
+    @recipe = Recipe.new
+  end
 
-  def destroy; end
+  def create
+    @recipe = current_user.recipes.new(recipe_params)
 
-  def togle
+    respond_to do |format|
+      if @recipe.save
+        format.html { redirect_to recipes_url, notice: 'Recipe Added successfully.' }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @recipe.destroy
+    authorize! :destroy, @recipe
+
+    respond_to do |format|
+      format.html { redirect_to recipes_url, notice: 'Recipe removed successfully.' }
+    end
+  end
+
+  private
+
+  def set_recipe
     @recipe = Recipe.find(params[:id])
-    @recipe.public = !@recipe.public
-    @recipe.save
-    redirect_to @recipe
+  end
+
+  def recipe_params
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end

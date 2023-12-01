@@ -2,16 +2,16 @@
 
 one:
   name: MyString
-  preparation_time: 2023-11-28 16:17:30
-  cooking_time: 2023-11-28 16:17:30
+  preparation_time: 1
+  cooking_time: 1
   description: MyText
   public: false
   user: one
 
 two:
   name: MyString
-  preparation_time: 2023-11-28 16:17:30
-  cooking_time: 2023-11-28 16:17:30
+  preparation_time: 1
+  cooking_time: 1
   description: MyText
   public: false
   user: two
