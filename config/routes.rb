@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :recipe_foods
   end
   get '/recipes/:id/visibity', to: "recipes#togle"
+  get '/general_shopping_list', to: "recipe_foods#general_shopping_list"
   get 'up' => 'rails/health#show', as: :rails_health_check
 end
