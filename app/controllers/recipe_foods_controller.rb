@@ -35,7 +35,7 @@ class RecipeFoodsController < ApplicationController
     params.require(:recipe_food).permit(:quantity, :food_id, :recipe_id)
   end
 
-  def have_this_food?(base, item)
+  def this_food?(base, item)
     @food_element = nil
     base.each do |element|
       @food_element = element if item == element[:food]
@@ -48,7 +48,7 @@ class RecipeFoodsController < ApplicationController
     @all_recipes = current_user.recipes
     @all_recipes.each do |recipe_item|
       recipe_item.recipe_foods.each do |recipe_food_item|
-        @food = have_this_food?(@food_to_buy, recipe_food_item.food.name)
+        @food = this_food?(@food_to_buy, recipe_food_item.food.name)
         if @food
           @index_food = @food_to_buy.index(@food)
           @food_to_buy[@index_food][:quantity] += recipe_food_item.quantity
