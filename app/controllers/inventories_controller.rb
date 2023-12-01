@@ -14,7 +14,7 @@ class InventoriesController < ApplicationController
 
     respond_to do |format|
       if @inventory.save
-        format.html { redirect_to inventories_path, notice: 'Inventory created successfully.' }
+        format.html { redirect_to inventories_path, notice: 'Inventory was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -27,15 +27,8 @@ class InventoriesController < ApplicationController
     @inventory.destroy!
 
     respond_to do |format|
-      format.html { redirect_to inventories_url, notice: 'Inventory removed successfully.' }
+      format.html { redirect_to inventories_url, notice: 'Inventory was successfully deleted.' }
     end
-  end
-
-  def show
-    @inventory = Inventory.find(params[:id])
-    @foods = @inventory.inventory_foods.includes(:food)
-    @foody = Food.all
-    @inventory_food = InventoryFood.new
   end
 
   private
