@@ -9,4 +9,16 @@ RSpec.describe Food, type: :model do
   it 'is expected to be a Food object' do
     expect(@food).to be_a(Food)
   end
+
+  it 'is valid with valid attributes' do
+    food = Food.new(name: 'apple', measurement_unit: "grams" 'pieces', price: 18,
+                    quantity: 24, user:@user)
+    expect(food).to be_valid
+  end
+
+  it 'is not valid without a name' do
+    food = Food.new(measurement_unit: 'pieces', price: 18,
+                    quantity: 24, user:@user)
+    expect(food).not_to be_valid
+  end
 end
