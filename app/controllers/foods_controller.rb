@@ -17,7 +17,12 @@ class FoodsController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    @food = Food.find(params[:id])
+    @recipe_food = RecipeFood.where(food_id: @food.id).destroy_all
+    @food.destroy
+    redirect_to '/foods'
+	end
 
   private
 
