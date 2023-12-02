@@ -7,6 +7,6 @@
     <%= form.text_area :description, placeholder:"write here the recipe description"%>
     <label for="recipeVisibility">Set Visibility to others</label>
      <%= form.select :public, options_for_select([["true",true],["false",false]]), {}, { id: 'recipeVisibility' } %>
-       <%= form.submit "Create" %>
+       <%= form.submit "Create", class:"btnSubmit" %>
   <% end %>
 </section>

@@ -2,10 +2,8 @@ class RecipeFoodsController < ApplicationController
   def new
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = RecipeFood.new
-    @foods = Food.all
-  end
-
-  def index; end
+    @foods = current_user.foods
+    end
 
   def create
     @recipe_food = RecipeFood.where(food_id: params[:recipe_food]['food_id'],
