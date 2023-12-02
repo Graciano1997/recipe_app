@@ -1,0 +1,10 @@
+<section class="recipesListContainer">
+<%= render partial:"layouts/header", locals:{header:"Public Recipes"}%>
+<% if (@public_recipes.size>0) %>
+<% @public_recipes.each do |recipe_item|%>
+<%= render partial:"recipes/recipe_item", locals: {recipe_item:recipe_item,current_user:@current_user} %>
+<% end %>
+<% else %>
+ <%= render partial:"foods/no_food"%>
+<% end %>
+</section>

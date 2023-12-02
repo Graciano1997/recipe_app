@@ -11,8 +11,13 @@
   </head>
 
   <body>
+  <%if current_user%>
+  <%= render partial:"layouts/menu"%>
+  <%end%>
+  <div class="container">
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+  </div>
   </body>
 </html>

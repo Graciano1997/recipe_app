@@ -1,0 +1,10 @@
+<header class="appHeader">
+<div class="logo">Logo</div>
+<nav>
+<%= link_to "Foods", foods_path %>
+<%= link_to "Recipes", recipes_path %>
+<%= link_to "Public_Recipes", public_recipes_path %>
+<%= link_to "Shopping_List", general_shopping_list_path %>
+<%= link_to "Logout", destroy_user_session_path, data: {turbo_method: :delete }%>
+</nav>
+</header>

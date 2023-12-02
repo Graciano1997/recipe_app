@@ -1,0 +1,15 @@
+<div class="recipesItemContainer">
+<div class="recipeHeaderAndAction">
+  <h3><%= recipe_item.name%></h3>
+  <%= link_to "Details", recipe_path(recipe_item) %>
+  <% if current_user.id==recipe_item.user_id %>
+    <%= link_to "Remove", recipe_path(recipe_item), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
+  <%end%>
+</div>
+<div>
+  <p><%=recipe_item.description%></p>
+</div>
+</div>

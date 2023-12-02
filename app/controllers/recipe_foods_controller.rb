@@ -22,10 +22,11 @@ class RecipeFoodsController < ApplicationController
 
   def general_shopping_list
     @total = 0
-    @shopping_list = what_food_to_buy?
-    @shopping_list.each do |item|
-      @total += item[:price]
-    end
+    @all_recipe_foods=get_recipe_foods
+    @shopping_list =what_food_to_buy?(@all_recipe_foods)
+     @shopping_list.each do |item|
+       @total += item[:price]
+     end
     @total
   end
 
@@ -43,27 +44,38 @@ class RecipeFoodsController < ApplicationController
     @food_element
   end
 
-  def what_food_to_buy?
-    @food_to_buy = []
+  def get_recipe_foods
+    @all_foods = []
     @all_recipes = current_user.recipes
     @all_recipes.each do |recipe_item|
       recipe_item.recipe_foods.each do |recipe_food_item|
-        @food = this_food?(@food_to_buy, recipe_food_item.food.name)
+        @food = this_food?(@all_foods, recipe_food_item.food.name)
         if @food
-          @index_food = @food_to_buy.index(@food)
-          @food_to_buy[@index_food][:quantity] += recipe_food_item.quantity
-          @food_to_buy[@index_food][:price] = recipe_food_item.food.price * @food_to_buy[@index_food][:quantity]
+          @index_food = @all_foods.index(@food)
+          @all_foods[@index_food][:quantity] += recipe_food_item.quantity
+          @all_foods[@index_food][:price] = recipe_food_item.food.price * @all_foods[@index_food][:quantity]
         else
-
           @food = {} if @food.nil?
+          @food[:id] = recipe_food_item.food.id
           @food[:food] = recipe_food_item.food.name
           @food[:quantity] =
-            (recipe_food_item.quantity.to_i - Food.includes(:user).where(id: recipe_food_item.food_id.to_i,
-                                                                         user: current_user).first.quantity.to_i).abs
+            recipe_food_item.quantity.to_i
           @food[:price] = recipe_food_item.food.price * @food[:quantity]
           @food[:unit] = recipe_food_item.food.measurement_unit
-          @food_to_buy.push(@food)
+          @all_foods.push(@food)
         end
+      end
+    end
+    @all_foods
+  end
+
+  def what_food_to_buy?(all_recipes_foods)
+    @food_to_buy = []
+    all_recipes_foods.each_with_index do |recipe_item,index|
+      current_food=Food.where(user:current_user,id:recipe_item[:id]).first
+      if current_food.quantity.to_i < recipe_item[:quantity].to_i
+        recipe_item[:quantity]-=current_food.quantity
+        @food_to_buy.push(recipe_item)
       end
     end
     @food_to_buy
