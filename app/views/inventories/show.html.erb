@@ -1,16 +1,10 @@
-<section class="shopping">
-  <div class="hero">
-    <h2><%= @inventory.name %></h2>
-    <% if can? :destroy, @inventory %>
-      <a id="add-food-link">Add Food</a>
-    <% end %>
-  </div>
+
 <div>
 <% if @foods.empty? %>
 <p>No food added to the inventory yet.
 <%= @inventory.description %></p>
 <% else %>
-</div>
+
 <table>
   <thead>
     <tr>
@@ -35,7 +29,12 @@
   </tbody>
 </table>
 <% end %>
+ small-adjustment
 <div class="inventory-modal" id="popup-modal">
+
+
+<div>
+ dev
     <div><span>x</span></div>
     <div>
       <h2>Add inventory food</h2>
@@ -58,4 +57,7 @@
       <% end %>
     </div>
 </div>
+ small-adjustment
 </section>
+
+ dev
