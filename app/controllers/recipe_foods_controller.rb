@@ -1,30 +1,51 @@
 class RecipeFoodsController < ApplicationController
+  # load_and_authorize_resource
+  #  before_action :set_recipe
+
+  def new
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = RecipeFood.new
+  end
+
+  def show
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = RecipeFood.find(params[:id])
+  end
+
   def create
     @recipe = Recipe.find(params[:recipe_id])
-    @recipe_food = @recipe.recipe_foods.new(recipe_food_params)
+    @recipe_food = @recipe.recipe_foods.build(recipe_food_params)
 
-    respond_to do |format|
-      if @recipe_food.save!
-        format.html { redirect_to recipe_path(@recipe), notice: 'Ingredient added successfully.' }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @recipe_food.save
+      redirect_to recipe_path(@recipe), notice: 'Ingredient was successfully added.'
+    else
+      render :new
     end
   end
 
-  def destroy
-    @recipe_food = RecipeFood.find(params[:id])
-    authorize! :destroy, @recipe_food
-    @recipe_food.destroy!
+  def modify
+    recipe_food = RecipeFood.find(params[:id])
+    new_quantity = params[:recipe_food][:quantity]
 
-    respond_to do |format|
-      format.html { redirect_to recipe_url, notice: 'Ingredient removed successfully.' }
+    if recipe_food.update(quantity: new_quantity)
+      flash[:success] = 'Quantity updated successfully'
+    else
+      flash[:error] = 'Failed to update quantity'
     end
+
+    redirect_to recipe_food_path(recipe_food)
+  end
+
+  def destroy
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = RecipeFood.find(params[:id])
+    @recipe_food.destroy
+    redirect_to recipe_path(@recipe), notice: 'Ingredient was successfully removed.'
   end
 
   private
 
   def recipe_food_params
-    params.require(:recipe_foods).permit(:food_id, :quantity)
+    params.require(:recipe_food).permit(:food_id, :quantity)
   end
 end

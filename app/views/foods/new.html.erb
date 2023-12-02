@@ -1,25 +1,39 @@
-<section class="auth-forms">
-  <div class="form-box">
-    <div class="left-food"></div>
-    <div class="right">
-      <h2>Add Food</h2>
-      <%= form_with(model: @food) do |f| %>
-        <div class="field">
-          <%= f.text_field :food, placeholder: "Food name", autofocus: true, required: true %>
-        </div>
+<div class="container d-flex flex-column justify-content-center align-items-center">
+<h4> Add new food</h4>
 
-        <div class="field">
-          <%= f.text_field :measurement_unit, placeholder: "Measurement unit", required: true %>
-        </div>
+<%= form_with model: @food, url: foods_path do |form| %>
+<% if @food.errors.any? %>
+ <div>
+                <h2><%= pluralize(food.errors.count, "error") %> Food cannot be saved:</h2>
 
-        <div class="field">
-          <%= f.text_field :price, placeholder: "Unit price", required: true %>
-        </div>
-        
-        <div class="actions">
-          <%= f.submit "Add Food" %>
-        </div>
-      <% end %>
-    </div>
+                <ul>
+                    <% food.errors.each do |error| %>
+                        <li><%= error.full_message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+
+        <div class="d-flex flex-column w-100">
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name, class: 'w-100', required: true%>
   </div>
-</section>
+  <div>
+        <%= form.label :measurement_unit, style: "display: block" %>
+        <%= form.select :measurement_unit, options_for_select(['units', 'grams', 'kg', 'pounds']), { prompt: 'Select a category  ...' }, class: 'w-100' %>
+  </div>
+  <div>
+  <%= form.label :price, style: "display: block" %>
+    <%= form.number_field :price, class: 'w-100', required: true%>
+  </div>
+  <div>
+   <%= form.label :quantity, style: "display: block" %>
+    <%= form.number_field :quantity, class: 'w-100', required: true%>
+  </div>
+   <%=form.submit "Create food", class: "btn btn-outline-dark btn-sm mt-2 float-start"%>
+  </div>
+  </div>
+ <%end%>
+</div>

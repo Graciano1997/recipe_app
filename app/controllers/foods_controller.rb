@@ -1,43 +1,40 @@
 class FoodsController < ApplicationController
-  load_and_authorize_resource
-
   def index
-    @foods = Food.all
+    @user = current_user
+    @foods = @user.foods.all
   end
 
-  def show
-    @food = Food.find(params[:id])
-  end
+  def show; end
 
   def new
     @food = Food.new
   end
 
   def create
-    @food = current_user.foods.new(food_params)
-
-    respond_to do |format|
-      if @food.save
-        format.html { redirect_to foods_path, notice: 'Food was created successfully' }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    @food = Food.new(food_params)
+    @food.user = current_user
+    if @food.save
+      flash[:success] = 'Food was successfully added.'
+      redirect_to foods_path, notice: 'Food was successfully added.'
+    else
+      flash[:error] = 'Food does not exist in your food list, please add it to your food list.'
+      render :new
     end
   end
 
   def destroy
     @food = Food.find(params[:id])
-    authorize! :destroy, @food
-    @food.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to foods_url, notice: 'Food was successfully deleted.' }
+    if @food.destroy
+      flash[:notice] = 'Food was successfully deleted.'
+    else
+      flash[:alert] = 'Failed to delete food.'
     end
+    redirect_to foods_path, notice: 'Food was successfully deleted.'
   end
 
   private
 
   def food_params
-    params.require(:food).permit(:food, :measurement_unit, :price)
+    params.require(:food).permit(:name, :measurement_unit, :quantity, :price, :user_id)
   end
 end

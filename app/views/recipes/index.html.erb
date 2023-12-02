@@ -1,26 +1,20 @@
-<section class="hero">
-  <h1>Recipe List</h1>
-  <%= link_to 'Add Recipe', new_recipe_path %>
-
-  <% if @recipes.empty? %>
-    <p>No recipes yet. Please add a recipe.</p>
-  <% else %>
-  <div> 
-    <ul class="recipe-list">
-      <% @recipes.each do |rcp| %>
-        <%= link_to recipe_path(rcp.id) do %>
-          <li>
-            <div class="recipe-item">
-              <h3><%= rcp.name %></h3>
-              <% if can? :destroy, rcp %>
-                <%= link_to 'Remove', rcp, data: { turbo_method: :delete, turbo_confirm: 'You are about to delete this recipe! Do you want to continue?' }, type:"button" %>
-              <% end %>
-            </div>
-            <p><%= rcp.description %></p>
-          </li>
-        <% end %>
-      <% end %> 
-    </ul>
+<div class="container mt-3">
+<h1 class="h1">Recipes</h1>
+  <div class="mb-4 p-2 d-flex justify-content-sm-end">
+    <%= link_to "Add New Recipe", new_recipe_path, class: "btn btn-primary" %>
   </div>
+  <% @recipes.each do |recipe| %>
+    <div class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title"><%= link_to recipe.name, recipe, class: "text-decoration-none text-reset" %></h2>
+        <p class="card-text"><strong>Description:</strong> <%= recipe.description %></p>
+        <p class="card-text"><strong>Preparation Time:</strong> <%= recipe.preparation_time_minutes%> minutes</p>
+        <p class="card-text"><strong>Cooking Time:</strong> <%= recipe.cooking_time_minutes %> minutes</p>
+        
+        <% if current_user == recipe.user %>
+          <%= button_to "REMOVE", recipe_path(recipe.id), method: :delete, class: "btn btn-danger btn-sm" %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
-</section>
+</div>
