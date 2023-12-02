@@ -1,0 +1,13 @@
+<div class="recipeDesciption">
+  <div id="recipePrepTimeAndstates">
+    <h3>Preparation time: <%=recipe.preparation_time%> <%=recipe.preparation_time>1?"hours":"hour"%></h3>
+    <h3>Public:<a href=<%="/recipes/#{recipe.id}/visibity"%> ><button><%=recipe.public %></button> </a></h3>
+  </div>
+
+  <div>
+  <h3>Cooking time: <%=recipe.cooking_time%> <%=recipe.cooking_time>1?"hours":"hour"%></h3>
+  </div>
+  <div>
+  <%= recipe.description%>
+  </div>
+</div>

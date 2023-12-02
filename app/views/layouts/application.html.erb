@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RecipeApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <%if current_user%>
+  <%= render partial:"layouts/menu"%>
+  <%end%>
+  <div class="container">
+    <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </div>
+  
+    <%if current_user%>
+<footer>
+  <h3>Your Lovely Recipe App</h3>
+</footer>
+<%end%>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+<section class="formSection">
+  <%= form_with model: @recipe do |form| %>
+
+    <%= form.text_field :name, placeholder:"Recipe's name", min:0%>
+    <%= form.number_field :preparation_time, placeholder:"Preparation_time", min:0, step:"any"%>
+    <%= form.number_field :cooking_time, placeholder:"Cooking_time", min:0, step:"any"%>
+    <%= form.text_area :description, placeholder:"write here the recipe description"%>
+    <label for="recipeVisibility">Set Visibility to others</label>
+     <%= form.select :public, options_for_select([["true",true],["false",false]]), {}, { id: 'recipeVisibility' } %>
+       <%= form.submit "Create", class:"btnSubmit" %>
+  <% end %>
+</section>
