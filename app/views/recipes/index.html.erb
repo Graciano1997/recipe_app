@@ -1,4 +1,9 @@
 <section class="recipesListContainer">
+<div class="newRecipe">
+<a href="/recipes/new">
+<button type="button">new Recipe</button>
+</a>
+</div>
 <% if (@current_user_recipes.size>0) %>
 <% @current_user_recipes.each do |recipe_item|%>
 <%= render partial:"recipes/recipe_item", locals: {recipe_item:recipe_item} %>
