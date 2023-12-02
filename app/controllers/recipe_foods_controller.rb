@@ -20,7 +20,7 @@ class RecipeFoodsController < ApplicationController
 
   def general_shopping_list
     @total = 0
-    @all_recipe_foods = get_recipe_foods
+    @all_recipe_foods = list_recipe_foods
     @shopping_list = what_food_to_buy?(@all_recipe_foods)
     @shopping_list.each do |item|
       @total += item[:price]
@@ -42,7 +42,7 @@ class RecipeFoodsController < ApplicationController
     @food_element
   end
 
-  def get_recipe_foods
+  def list_recipe_foods
     @all_foods = []
     @all_recipes = current_user.recipes
     @all_recipes.each do |recipe_item|

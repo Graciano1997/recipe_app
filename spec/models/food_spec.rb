@@ -11,7 +11,7 @@ RSpec.describe Food, type: :model do
   end
 
   it 'is valid with valid attributes' do
-    food = Food.new(name: 'apple', measurement_unit: 'grams' 'pieces', price: 18,
+    food = Food.new(name: 'apple', measurement_unit: 'grams', 'pieces', price: 18,
                     quantity: 24, user: @user)
     expect(food).to be_valid
   end
