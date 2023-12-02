@@ -2,6 +2,13 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+ update-branch
+    user ||= User.new # Guest user
+    can :read, :all
+    can :manage, Food, user_id: user.id
+    can :manage, Recipe, user_id: user.id
+    can :manage, RecipeFood, recipe: { user_id: user.id }
+
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?
@@ -33,5 +40,6 @@ class Ability
     can :manage, Recipe, user: user if user.present?
     can :manage, Inventory, user: user if user.present?
     can :manage, InventoryFood, inventory: { user_id: user.id }
+ dev
   end
 end

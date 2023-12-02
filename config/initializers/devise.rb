@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '8bf0ae6824b61a075ad88be7f4d594f14a57fd3b78275a39c0c26e3373ee0a4cdef0bcbccfb1b7886d71fb5a008b494bbbf79dbf6009dddce13821308b471fa8'
+  # config.secret_key = '2b8bc14bf4e3a77cfbf438f536ba5062c2e3dc70d24a5171eebd5418f6c0b687d2ecc0c437e844da3625bbedbcfbb676873eb48bb5deb78935902eed7cfb81b5'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'cbf048e4d23a0a8d8ce5748f3a06a78748c26227ea30f175f27fd7865547a5ea74a92bb1eb62fa136ae2e79c1dd2d144dfe6897c6eb7ee71bb1659519042aefd'
+  # config.pepper = '5bbaf8e93072f73666326d1cfcc28e4ca155c8c1985a0ae2bdf5e05ef43cbe0bdf20cd87b29e84cd8b06e7bce4887e4c9ef154dbd74a68d72179e18a6fd75cc6'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -143,7 +143,7 @@ Devise.setup do |config|
   # without confirming their account.
   # Default is 0.days, meaning the user cannot access the website without
   # confirming their account.
-  # config.allow_unconfirmed_access_for = 2.days
+  config.allow_unconfirmed_access_for = 10.days
 
   # A period that the user is allowed to confirm their account before their
   # token becomes invalid. For example, if set to 3.days, the user can confirm
@@ -151,7 +151,7 @@ Devise.setup do |config|
   # their account can't be confirmed with the token any more.
   # Default is nil, meaning there is no restriction on how long a user can take
   # before confirming their account.
-  # config.confirm_within = 3.days
+  config.confirm_within = 10.days
 
   # If true, requires any email changes to be confirmed (exactly the same way as
   # initial account confirmation) to be applied. Requires additional unconfirmed_email

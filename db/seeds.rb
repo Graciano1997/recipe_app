@@ -1,5 +1,7 @@
-# seeds for Food 
-@user=User.first
-Food.create(name: "Apple", measurement_unit: "grams", price: 5, quantity:10, user: @user)
-Food.create(name: "Pineapple", measurement_unit: "grams", price: 1, quantity:10, user: @user)
-Food.create(name: "Chicken breast", measurement_unit: "units", price: 2, quantity:10, user: @user)
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
+#   Character.create(name: "Luke", movie: movies.first)
