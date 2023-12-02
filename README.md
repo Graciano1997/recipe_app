@@ -23,7 +23,7 @@
 **Recipe App** is a user-friendly web application designed to help users discover, organize, and share their favorite recipes. With an intuitive interface, users can browse a diverse collection of recipes, add their own culinary creations, and explore cooking ideas from a vibrant community.
 
 ## 🛠 Built With <a name="built-with"></a>
-Ruby on Rails, Visual Studia Code, WSL
+Ruby on Rails, Visual Studia Code, WSL.
 
 ### Tech Stack <a name="tech-stack"></a>
 
@@ -49,8 +49,8 @@ In order to use this project.. Clone this repository to your desired folder by p
 
 ### Prerequisites <a name="prerequisites"></a>
 
-  Ruby on Rails
-  Git
+  Ruby on Rails.
+  Git.
 
 ### Install <a name="install"></a>
 
