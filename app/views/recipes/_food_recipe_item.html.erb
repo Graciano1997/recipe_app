@@ -1,0 +1,6 @@
+<div class="foodTableBody">
+<div><%= food_item.food.name%></div>
+<div><%= food_item.quantity%> <%= food_item.food.measurement_unit%></div>
+<div>$<%= food_item.food.price*food_item.quantity%></div>
+<div>Delete <%= food_item.id%></div>
+</div>

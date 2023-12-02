@@ -6,11 +6,19 @@
     <p>No inventories yet. Please add an inventory.</p>
   <% else %>
 
+ small-adjustment
+    <ul class="inventory">
+      <% @inventories.each do |invt| %>
+        <%= link_to inventory_path(invt.id) do %>
+          <li class="public-recipe">
+            <h3><%= invt.name %></h3>
+
     <ul>
       <% @inventories.each do |invt| %>
         <%= link_to inventory_path(invt.id) do %>
           <li>
             <h4><%= invt.name %></h4>
+ dev
             <p><%= invt.description %></p>
             <div>
               <% if can? :destroy, invt %>
