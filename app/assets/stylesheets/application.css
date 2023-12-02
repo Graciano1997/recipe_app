@@ -120,7 +120,7 @@ padding: 5px 0 5px 0;
 }
 
 /* Form */
-.formSection {
+.formSection form {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;

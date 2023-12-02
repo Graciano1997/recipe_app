@@ -1,17 +1,12 @@
-<section class="recipeItemContainer">
-<%= render partial:"layouts/header", locals:{header:@recipe.name}%>
-<%= render partial:"recipes/description", locals:{recipe:@recipe}%>
-<%= render partial:"recipes/actions", locals:{recipe:@recipe}%>
-<hr>
+<section class="formSection">
+  <%= form_with model: @recipe do |form| %>
 
-<div class="foodTable">
-<%= render partial:"recipes/foods_header"%>
-<% if (@recipe_items.size>0) %>
-<%@recipe_items.each_with_index do |recipe_item, index|%>
-<%= render partial:"recipes/food_recipe_item", locals: {food_item:recipe_item} %>
-<% end %>
-<% else %>
- <%= render partial:"foods/no_food"%>
-<% end %>
-</div>
+    <%= form.text_field :name, placeholder:"Recipe's name", min:0%>
+    <%= form.number_field :preparation_time, placeholder:"Preparation_time", min:0, step:"any"%>
+    <%= form.number_field :cooking_time, placeholder:"Cooking_time", min:0, step:"any"%>
+    <%= form.text_area :description, placeholder:"write here the recipe description"%>
+    <label for="recipeVisibility">Set Visibility to others</label>
+     <%= form.select :public, options_for_select([["true",true],["false",false]]), {}, { id: 'recipeVisibility' } %>
+       <%= form.submit "Create" %>
+  <% end %>
 </section>
