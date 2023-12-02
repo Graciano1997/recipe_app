@@ -3,7 +3,7 @@ class RecipeFoodsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = RecipeFood.new
     @foods = current_user.foods
-    end
+  end
 
   def create
     @recipe_food = RecipeFood.where(food_id: params[:recipe_food]['food_id'],
@@ -20,11 +20,11 @@ class RecipeFoodsController < ApplicationController
 
   def general_shopping_list
     @total = 0
-    @all_recipe_foods=get_recipe_foods
-    @shopping_list =what_food_to_buy?(@all_recipe_foods)
-     @shopping_list.each do |item|
-       @total += item[:price]
-     end
+    @all_recipe_foods = get_recipe_foods
+    @shopping_list = what_food_to_buy?(@all_recipe_foods)
+    @shopping_list.each do |item|
+      @total += item[:price]
+    end
     @total
   end
 
@@ -69,10 +69,10 @@ class RecipeFoodsController < ApplicationController
 
   def what_food_to_buy?(all_recipes_foods)
     @food_to_buy = []
-    all_recipes_foods.each_with_index do |recipe_item,index|
-      current_food=Food.where(user:current_user,id:recipe_item[:id]).first
+    all_recipes_foods.each_with_index do |recipe_item, _index|
+      current_food = Food.where(user: current_user, id: recipe_item[:id]).first
       if current_food.quantity.to_i < recipe_item[:quantity].to_i
-        recipe_item[:quantity]-=current_food.quantity
+        recipe_item[:quantity] -= current_food.quantity
         @food_to_buy.push(recipe_item)
       end
     end
