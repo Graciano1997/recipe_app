@@ -2,5 +2,8 @@
 <div><%= food_item.food.name%></div>
 <div><%= food_item.quantity%> <%= food_item.food.measurement_unit%></div>
 <div>$<%= food_item.food.price*food_item.quantity%></div>
-<div>Delete <%= food_item.id%></div>
+<div><%= link_to "Remove", food_path(food_item), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></div>
 </div>

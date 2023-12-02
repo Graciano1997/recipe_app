@@ -22,7 +22,7 @@ class FoodsController < ApplicationController
     @recipe_food = RecipeFood.where(food_id: @food.id).destroy_all
     @food.destroy
     redirect_to '/foods'
-	end
+  end
 
   private
 
